@@ -1,0 +1,20 @@
+name: CI
+
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Poetry
+        run : curl -sSL https://install.python-poetry.org python3 -
+      - name: Install dependencies
+        run: poetry install
+      - name: Run Linter (Ruff)
+        run: poetry run ruff check .
+      - name: Run Tests (Pytest)
+        run: poetry run pytest

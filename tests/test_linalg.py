@@ -1,6 +1,7 @@
 import numpy as np
-import pytest
+
 from physics_toolkit.linealg import is_hermitian
+
 
 def test_is_hermitian_standard():
     mat = np.array([[2, 3 +1j], [3 -1j, 4]])

@@ -8,8 +8,13 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "numpy (>=2.2.0,<3.0.0)"
 ]
 
+[tool.poetry]
+packages = [
+    { include = "physics_toolkit", from = "src" }
+]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

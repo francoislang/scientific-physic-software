@@ -58,7 +58,7 @@ htmlcov/
 .idea/**/gradle.xml
 .idea/**/libraries
 # Si tu veux ignorer tout le dossier .idea (souvent plus simple au début) :
- .idea/
+.idea/
 
 # --- macOS ---
 .DS_Store

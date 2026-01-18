@@ -1,13 +1,12 @@
 import numpy as np
 from numpy.typing import NDArray
 
+from utils.utils import is_square_matrix, is_vector
+
 
 def is_hermitian(matrix: NDArray[np.complexfloating | np.floating]) -> bool:
-    if matrix.ndim != 2:
-        raise ValueError("Matrix must be 2D")
-
-    if matrix.shape[0] != matrix.shape[1]:
-        raise ValueError("Matrix must be square")
+    if not is_square_matrix(matrix):
+        raise ValueError("Must be a square matrix")
 
     return np.allclose(matrix, matrix.conj().T)
 
@@ -22,3 +21,14 @@ def eigh_sorted(
     sort_indices = np.argsort(eigvalues)
 
     return eigvalues[sort_indices], eigvecs[:, sort_indices]
+
+
+def solver(
+    A: NDArray[np.complexfloating | np.floating],
+    b: NDArray[np.complexfloating | np.floating],
+) -> NDArray[np.complexfloating]:
+    if not is_square_matrix(A):
+        raise ValueError("Matrix A must be square")
+    if not is_vector(b):
+        raise ValueError("Vector b must be a vector")
+    return np.linalg.solve(A, b)

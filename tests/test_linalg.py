@@ -103,14 +103,14 @@ def test_sorting_consistency_eigh_sorted(mat):
     # 1. Vérifie que les valeurs sont triées croissantes
     assert np.all(np.diff(eigvals) >= -1e-15)
 
-    # 2. Vérifie la cohérence vecteurs/valeurs
-    # On utilise la forme matricielle sûre
+    # 2. Vérifie la cohérence vecteurs/valeurs On utilise la forme matricielle sûre
     assert np.allclose(H @ eigvecs, eigvecs @ np.diag(eigvals), atol=1e-8)
 
 
 @given(complex_matrices)
 def test_real_values_eigh_sorted(mat):
     H = mat + mat.conj().T
+
     eigvals, _ = eigh_sorted(H)
 
     assert np.allclose(eigvals.imag, 0, atol=1e-8)

@@ -1,7 +1,7 @@
 import numpy as np
 from numpy.typing import NDArray
 
-from utils.utils import is_square_matrix, is_vector
+from utils.utils import is_inversible, is_square_matrix, is_vector
 
 
 def is_hermitian(matrix: NDArray[np.complexfloating | np.floating]) -> bool:
@@ -26,9 +26,13 @@ def eigh_sorted(
 def solver(
     A: NDArray[np.complexfloating | np.floating],
     b: NDArray[np.complexfloating | np.floating],
-) -> NDArray[np.complexfloating]:
+) -> NDArray[np.complexfloating | np.floating]:
     if not is_square_matrix(A):
         raise ValueError("Matrix A must be square")
     if not is_vector(b):
         raise ValueError("Vector b must be a vector")
+    if not is_inversible(A):
+        raise ValueError("Matrix A is not invertible")
+    if A.shape[0] != b.shape[0]:
+        raise ValueError("Matrix A and vector b must have the same size")
     return np.linalg.solve(A, b)

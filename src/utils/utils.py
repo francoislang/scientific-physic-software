@@ -8,3 +8,7 @@ def is_square_matrix(matrix: NDArray[np.complexfloating | np.floating]) -> bool:
 
 def is_vector(vector: NDArray[np.complexfloating | np.floating]) -> bool:
     return vector.ndim == 1
+
+
+def is_inversible(matrix: NDArray[np.complexfloating | np.floating]) -> bool:
+    return np.linalg.det(matrix) != 0

@@ -23,12 +23,20 @@ build-backend = "poetry.core.masonry.api"
 [dependency-groups]
 dev = [
     "pytest (>=9.0.2,<10.0.0)",
-    "ruff (>=0.14.13,<0.15.0)"
+    "ruff (>=0.14.13,<0.15.0)",
+    "hypothesis (>=6.150.2,<7.0.0)"
 ]
 
 [tool.ruff]
 line-length = 88
 target-version="py310"
+exclude = [
+    ".venv",
+    ".git",
+    "__pycache__",
+    "build",
+    "dist"
+]
 
 [tool.ruff.lint]
 select = ["E", "F", "I"] # E: pycodestyle, F: pyflakes, I: isort

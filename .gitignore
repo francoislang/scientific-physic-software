@@ -39,6 +39,7 @@ venv.bak/
 htmlcov/
 .tox/
 .nox/
+.hypothesis/
 
 # --- PyCharm (JetBrains) ---
 # On ignore les fichiers de conf personnels, mais on garde les configs partagées
